@@ -6,19 +6,11 @@
 /*   By: rertzer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 15:25:05 by rertzer           #+#    #+#             */
-/*   Updated: 2023/03/25 11:59:49 by rertzer          ###   ########.fr       */
+/*   Updated: 2023/04/09 11:20:41 by rertzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <fstream>
-#include <string>
-
-int			sed4Dummies(const std::string infile, const std::string s1, const std::string s2);
-void		parse(std::ifstream& ifs, std::ofstream&  ofs, const std::string s1, const std::string s2);
-std::string	getNextChunk(std::ifstream& ifs);
-size_t		replace(std::string& line, const std::string& s1, const std::string& s2);
-size_t		recomputeHinge(size_t oldhinge, size_t line_len, size_t s2_len);
+#include "sfl.h"
 
 int	main(int argc, char **argv)
 {
@@ -54,13 +46,13 @@ int	sed4Dummies(const std::string infile, const std::string s1, const std::strin
 		ifs.close();
 		return 1;
 	}
-	parse(ifs, ofs, s1, s2);
+	ft_parse(ifs, ofs, s1, s2);
 	ifs.close();
 	ofs.close();
 	return 0;
 }
 
-void	parse(std::ifstream& ifs, std::ofstream&  ofs, const std::string s1, const std::string s2)
+void	ft_parse(std::ifstream& ifs, std::ofstream&  ofs, const std::string s1, const std::string s2)
 {
 	size_t			hinge;
 	std::string		line = "";
@@ -69,7 +61,7 @@ void	parse(std::ifstream& ifs, std::ofstream&  ofs, const std::string s1, const 
 	{
 		line += getNextChunk(ifs);
 		
-		hinge = replace(line, s1, s2);
+		hinge = ft_replace(line, s1, s2);
 		hinge = recomputeHinge(hinge, line.length(), s2.length());
 		ofs << line.substr(0, hinge);
 		line = line.substr(hinge);
@@ -95,7 +87,7 @@ std::string	getNextChunk(std::ifstream& ifs)
 	return strbuffer;
 }
 
-size_t	replace(std::string& line, const std::string& s1, const std::string& s2)
+size_t	ft_replace(std::string& line, const std::string& s1, const std::string& s2)
 {
 	size_t	start;
 	size_t	found;

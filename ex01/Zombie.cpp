@@ -6,7 +6,7 @@
 /*   By: rertzer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 10:07:01 by rertzer           #+#    #+#             */
-/*   Updated: 2023/03/23 13:09:27 by rertzer          ###   ########.fr       */
+/*   Updated: 2023/04/09 09:59:28 by rertzer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Zombie::Zombie()
 
 Zombie::~Zombie(void)
 {
-	std::cout << this->name << " the zombie left us. May his soul rest in peace" << std::endl;
+	std::cout << this->name << " the zombie left us. May her soul rest in peace" << std::endl;
 }
 
 void	Zombie::setName(std::string nm)
